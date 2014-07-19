@@ -1,7 +1,5 @@
 require 'menu'
 
-
-
 describe 'Menu' do
 
   let(:menu)    {Menu.new}
@@ -24,6 +22,7 @@ describe 'Menu' do
   end
 
   it 'can print the dish name in the menu' do
+    allow(STDOUT).to receive(:puts)
     curry = double :dish, name: "Vindaloo", price: 5
     menu = Menu.new([curry])
     expect(curry).to receive(:name).and_return("Vindaloo")
@@ -31,6 +30,7 @@ describe 'Menu' do
   end
 
   it 'can print the dish price in the menu' do
+    allow(STDOUT).to receive(:puts)
     curry = double :dish, name: "Vindaloo", price: 5
     menu = Menu.new([curry])
     expect(curry).to receive(:price).and_return(5)
