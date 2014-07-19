@@ -10,8 +10,11 @@ class Menu
     @dishes.any?
   end
 
-  def show
-    puts"#{dishes[:name].to_s} : £#{dishes[:price]}"
+  def add(dish)
+    dishes << dish
   end
 
+  def print
+    dishes.each{|dish| puts dish.name + ": £" + dish.price.to_s}
+  end
 end
