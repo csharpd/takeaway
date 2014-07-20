@@ -8,12 +8,8 @@ attr_reader :name, :number, :shoppingcart
     @shoppingcart = shoppingcart
   end
 
-  def view(menu)
-    menu.show
-  end
-
-  def select(dish, quantity)
-    quantity.times{ shoppingcart << dish }
+  def add_dish_to(order,system,dish_name,quantity)
+    order.add(system.menu.select(dish_name),quantity)
   end
 
 end

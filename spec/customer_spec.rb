@@ -21,22 +21,20 @@ let(:hungrygirl) {Customer.new("Chloe")}
     it 'customers shopping cart is empty when initialized' do
     expect(hungrygirl.shoppingcart.count).to eq 0
     end
-  end
 
-  context 'ordering' do
-    it 'the customer can access the menu' do
+    it 'can add a dish to an order on the system' do
+      order = double :order
       menu = double :menu
-      expect(menu).to receive(:show)
-      hungrygirl.view(menu)
+      system = double :system, menu: menu
+      quantity = 5
+      dish_name = "Sushi"
+      sushi = double :sushi
+
+      expect(order).to receive(:add).with(sushi,quantity)
+
+      expect(menu).to receive(:select).with(dish_name).and_return(sushi)
+
+      hungrygirl.add_dish_to(order, system, dish_name, quantity)
     end
-
-    it' the customer can add a dish to their shoppingcart ' do
-      pasta = double :dish
-      hungrygirl.select(pasta,2)
-      expect(hungrygirl.shoppingcart).to eq [pasta, pasta]
-    end
-
-
-
   end
 end

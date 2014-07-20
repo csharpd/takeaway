@@ -14,12 +14,8 @@ class Menu
     dishes << dish
   end
 
-  def show
-    dishes.map{ |dish| "#{dish[:name].to_s.capitalize}: £#{dish[:price]}" }.join("\n")
-  end
-
-  def order(dish,quantity)
-
+  def select(dish_name)
+    dishes.select{|dish| dish.name == dish_name}.first
   end
 
 end
