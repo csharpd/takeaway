@@ -14,7 +14,12 @@ class Menu
     dishes << dish
   end
 
-  def print
-    dishes.each{|dish| puts dish.name + ": £" + dish.price.to_s}
+  def show
+    dishes.map{ |dish| "#{dish[:name].to_s.capitalize}: £#{dish[:price]}" }.join("\n")
   end
+
+  def order(dish,quantity)
+
+  end
+
 end
