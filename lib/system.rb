@@ -1,3 +1,5 @@
+require_relative 'send_text'
+
 class System
 
   attr_accessor :menu, :orders

@@ -2,7 +2,7 @@ require 'customer'
 
 describe 'Customer' do
 
-let(:hungrygirl) {Customer.new("Chloe")}
+let(:hungrygirl) {Customer.new(name:"Chloe")}
 
   context 'creating the customer' do
     it 'the customer is initialised with a name' do
@@ -10,12 +10,12 @@ let(:hungrygirl) {Customer.new("Chloe")}
     end
 
     it 'the customer is initialised with a default number' do
-      expect(hungrygirl.number).to eq 333
+      expect(hungrygirl.number).to eq '+447832367439'
     end
 
     it 'the customer can provide a real number' do
-      hungryguy = Customer.new("Felix","07832367439")
-      expect(hungryguy.number).to eq "07832367439"
+      hungryguy = Customer.new(name:"Felix",number:"+447832367439")
+      expect(hungryguy.number).to eq "+447832367439"
     end
 
 

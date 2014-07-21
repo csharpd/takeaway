@@ -2,7 +2,7 @@ class Customer
 
 attr_reader :name, :number, :shoppingcart
 
-  def initialize(name, number=333,shoppingcart=[])
+  def initialize(name: nil, number: '+447832367439')
     @name = name
     @number = number
   end
