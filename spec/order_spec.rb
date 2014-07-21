@@ -7,17 +7,17 @@ describe 'Order' do
   let(:nachos)               {double :nachos, price: 5.50}
   let(:burito)               {double :burito, price: 8}
 
-    it 'needs to be created with a customer attached to it' do
+    it 'is created in conjunction with a customer' do
       expect(order.customer).to eq customer
     end
 
-    it 'has a list of items ordered' do
+    it 'contains a list of items that the customer has selected from the menu' do
       quantity = 2
       order.add(nachos,quantity)
       expect(order.items_ordered).to eq [nachos, nachos]
     end
 
-    it 'has a list containing each price for every item ordered so far' do
+    it 'can generate a list containing each price for every item selected so far' do
       order.add(nachos,2)
       expect(order.bill_breakdown).to eq [5.50, 5.50]
     end
@@ -28,7 +28,7 @@ describe 'Order' do
       expect(order.final_bill_amount).to eq 43
     end
 
-    it 'places an order on the system with the list of dishes ordered and the customers estimate of the final bill total' do
+    it 'places an order on the system with the list of dishes selected and the customers estimate of the final bill total' do
       quantity = 2
       order.add(nachos,quantity)
       order.add(burito,quantity)

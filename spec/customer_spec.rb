@@ -4,7 +4,7 @@ describe 'Customer' do
 
 let(:hungrygirl) {Customer.new(name:"Chloe")}
 
-  context 'creating the customer' do
+  context 'Creating the customer' do
     it 'the customer is initialised with a name' do
       expect(hungrygirl.name).to eq "Chloe"
     end
@@ -13,13 +13,13 @@ let(:hungrygirl) {Customer.new(name:"Chloe")}
       expect(hungrygirl.number).to eq '+447832367439'
     end
 
-    it 'the customer can provide a real number' do
-      hungryguy = Customer.new(name:"Felix",number:"+447832367439")
-      expect(hungryguy.number).to eq "+447832367439"
+    it 'the customer can provide a number' do
+      hungryguy = Customer.new(name:"Felix",number:"+447832367449")
+      expect(hungryguy.number).to eq "+447832367449"
     end
-
-
-    it 'can add a dish to an order on the system' do
+  end
+  context 'Ordering dishes' do
+    it 'can add a dish to their order on the system' do
       order = double :order
       menu = double :menu
       system = double :system, menu: menu
@@ -34,7 +34,7 @@ let(:hungrygirl) {Customer.new(name:"Chloe")}
       hungrygirl.add_dish_to(order, system, dish_name, quantity)
     end
 
-    it 'can place the whole order' do
+    it 'can place their entire order' do
     order = double :order
     system = double :system
     estimate = 20

@@ -4,7 +4,7 @@ describe 'Menu' do
 
   let(:menu)    {Menu.new}
 
-  it 'doesnt have dishes when initialised' do
+  it "doesn't contain any dishes when initialised" do
     menu = Menu.new
     expect(menu).not_to have_dishes
   end

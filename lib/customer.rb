@@ -1,6 +1,7 @@
 class Customer
 
-attr_reader :name, :number
+attr_reader :name
+attr_accessor :number
 
   def initialize(name: nil, number: '+447832367439')
     @name = name

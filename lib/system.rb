@@ -14,7 +14,7 @@ class System
   end
 
   def text_message_for(order)
-     "Thank you! Your order was placed and will be delivered before #{calculate_delivery_time(order)}"
+     "Thank you! Your takeaway order has been placed and will be delivered before #{calculate_delivery_time(order)}, otherwise - it's on us!"
   end
 
   def calculate_delivery_time(order)
