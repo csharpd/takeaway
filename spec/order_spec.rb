@@ -1,6 +1,6 @@
 require 'order'
 
-describe 'order' do
+describe 'Order' do
 
   let(:customer)             {double :customer}
   let(:order)                {Order.new(customer)}

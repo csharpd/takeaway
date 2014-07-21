@@ -7,7 +7,7 @@ require 'twilio-ruby'
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def send_txt(phone_number, body)
+  def send_text(phone_number, body)
     account_setup
     @client.account.messages.create(
     :from => '+441565760062',

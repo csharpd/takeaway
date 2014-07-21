@@ -1,6 +1,6 @@
 require 'system'
 
-describe 'system' do
+describe 'System' do
   let(:order)    {double :order}
   let(:menu)     {double :menu, dishes: [nachos, burito]}
   let(:system)   {System.new(menu)}
@@ -21,11 +21,17 @@ describe 'system' do
     expect(system.orders).to eq [order]
   end
 
+  it 'place order and notifies with sms' do
+    customer = double :customer, number: '+447832367439'
+    order = double :order, customer: customer, time: 1752
+    expect(system).to receive(:send_text).with(order.customer.number, system.text_message_for(order))
+    system.place(order)
+  end
 
-  it 'confirms the order by text once places' do
+  it 'prepares txt message to be send' do
     order = double :order
     expect(system).to receive(:calculate_delivery_time).with(order)
-    system.confirm_by_text(order)
+    system.text_message_for(order)
 
   end
 
