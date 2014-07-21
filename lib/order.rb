@@ -1,11 +1,12 @@
 class Order
 
   attr_reader :customer
-  attr_accessor :items_ordered
+  attr_accessor :items_ordered, :time
 
   def initialize(customer)
     @customer = customer
     @items_ordered = []
+    @time = time
   end
 
   def add(dish,quantity)
@@ -17,6 +18,16 @@ class Order
   end
 
   def final_bill_amount
-    bill_breakdown.inject{|acc,num| acc + num}
+    bill_breakdown.inject(:+)
+  end
+
+  def place(system,estimate)
+    raise "Your estimate is wrong. The final bill ammount for this order is #{final_bill_amount}" unless estimate == final_bill_amount
+    @time = time_now
+    system.place(self)
+  end
+
+  def time_now
+    Time.now
   end
 end

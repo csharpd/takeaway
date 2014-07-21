@@ -18,9 +18,6 @@ let(:hungrygirl) {Customer.new("Chloe")}
       expect(hungryguy.number).to eq "07832367439"
     end
 
-    it 'customers shopping cart is empty when initialized' do
-    expect(hungrygirl.shoppingcart.count).to eq 0
-    end
 
     it 'can add a dish to an order on the system' do
       order = double :order
@@ -35,6 +32,16 @@ let(:hungrygirl) {Customer.new("Chloe")}
       expect(menu).to receive(:select).with(dish_name).and_return(sushi)
 
       hungrygirl.add_dish_to(order, system, dish_name, quantity)
+    end
+
+    it 'can place the whole order' do
+    order = double :order
+    system = double :system
+    estimate = 20
+
+    expect(order).to receive(:place).with(system, estimate)
+    hungrygirl.place(order, system, estimate)
+
     end
   end
 end
