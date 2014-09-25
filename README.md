@@ -38,7 +38,7 @@ require './lib/all_files_needed.rb'
 ###Test
 
 ```sh
-cd takeaway-challenge
+cd takeaway
 rspec
 ``` 
 
